@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  pavlov-ctl:
+    build: .
+    network_mode: "host"
+    restart: always
+  pavlov-bot-prod:
+    build:
+     context: .
+     dockerfile: ./Dockerfile
+    network_mode: "host"
+    restart: always

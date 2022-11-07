@@ -1,0 +1,13 @@
+---
+telegram_token: "TOKEN"
+priority_user:
+  - Stalker
+servers:
+  server1:
+    host: pavlov1.host.com
+    port: 9001
+    password: "pa$$word"
+  server2:
+    host: pavlov2.host.com
+    port: 9002
+    password: "9002"
