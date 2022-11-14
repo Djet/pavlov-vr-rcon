@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 1m
+
+scrape_configs:
+  - job_name: "pavlov-metrics"
+    static_configs:
+    - targets: ["pavlov-metrics:9001"]

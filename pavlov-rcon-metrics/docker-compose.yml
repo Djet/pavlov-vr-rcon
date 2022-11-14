@@ -1,0 +1,51 @@
+version: '3.8'
+
+networks:
+  monitoring:
+    driver: bridge
+
+volumes:
+  prometheus_data: {}
+  grafana-data: {}
+services:
+  pavlov-metrics:
+    build:
+     context: .
+     dockerfile: ./Dockerfile
+    restart: always
+    volumes:
+      - ./config.yaml:/apps/config.yaml
+    expose:
+      - 9001
+    networks:
+      - monitoring
+
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    expose:
+      - 9090
+    networks:
+      - monitoring
+  grafana:
+        image: grafana/grafana:8.5.15
+        ports:
+          - 3000:3000
+        restart: unless-stopped
+        volumes:
+          - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+          - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+          - grafana-data:/var/lib/grafana
+        networks:
+          - monitoring

@@ -1,0 +1,30 @@
+---
+servers:
+  HAGUENAU:
+    host: rcon.server.host
+    port: 17001
+    password: "PaSsWord"
+  Fields_Of_France:
+    host: rcon.server.host
+    port: 17002
+    password: "PaSsWord"
+  ARDENNES:
+    host: rcon.server.host
+    port: 17003
+    password: "PaSsWord"
+  DDAY:
+    host: rcon.server.host
+    port: 17004
+    password: "PaSsWord"
+  CORDON:
+    host: rcon.server.host
+    port: 17005
+    password: "PaSsWord"
+  AGROPROM:
+    host: rcon.server.host
+    port: 17006
+    password: "PaSsWord"
+  STALKER:
+    host: rcon.server.host
+    port: 17007
+    password: "PaSsWord"
